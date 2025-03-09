@@ -1,0 +1,41 @@
+# Ignore Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log*
+
+# Ignore environment files
+Backend/.env
+Frontend/.env
+
+# Ignore build and cache files
+Backend/dist/
+Frontend/dist/
+Backend/build/
+Frontend/build/
+.cache/
+.DS_Store
+
+# Ignore logs
+logs/
+*.log
+Backend/logs/
+Frontend/logs/
+
+# Ignore editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore coverage reports
+coverage/
+Backend/coverage/
+Frontend/coverage/
+
+# Ignore dependency lock files (optional)
+# Uncomment below if you don’t want to track lock files
+# Backend/package-lock.json
+# Frontend/package-lock.json
+# Backend/yarn.lock
+# Frontend/yarn.lock
