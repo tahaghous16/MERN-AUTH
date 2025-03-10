@@ -14,9 +14,7 @@ const allowedOrigins = ["https://mern-auth-frontend-opal.vercel.app"];
 
 //Database Connection
 mongoose
-  .connect(
-    "mongodb+srv://Taha_Ghous:yb-C7kpvfMc7k7v@cluster0.61woh.mongodb.net/"
-  )
+  .connect(process.env.URI)
   .then(() => {
     console.log("Connected!");
   })
