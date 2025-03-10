@@ -25,7 +25,7 @@ const Login = () => {
           name,
           email,
           password,
-        });
+        }, { withCredentials: true });
 
         if (data.success) {
           setIsLoggedin(true);
