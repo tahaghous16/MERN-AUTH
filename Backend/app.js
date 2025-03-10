@@ -8,11 +8,9 @@ import userRouter from "./routes/user.route.js";
 
 const PORT = process.env.PORT || 3000;
 
-
 const app = express();
 
-const allowedOrigins = ["https://mern-auth-frontend-xi.vercel.app" ,"http://localhost:5173", 
-  "http://localhost:3000",];
+const allowedOrigins = ["http://localhost:5173"];
 
 //Database Connection
 mongoose
