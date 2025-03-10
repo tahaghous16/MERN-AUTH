@@ -14,7 +14,9 @@ const allowedOrigins = ["http://localhost:5173"];
 
 //Database Connection
 mongoose
-  .connect(process.env.URI)
+  .connect(
+    "mongodb+srv://Taha_Ghous:yb-C7kpvfMc7k7v@cluster0.61woh.mongodb.net/"
+  )
   .then(() => {
     console.log("Connected!");
   })
