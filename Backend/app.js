@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["mern-auth-frontend-opal.vercel.app
+"];
 
 //Database Connection
 mongoose
