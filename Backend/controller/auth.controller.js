@@ -35,7 +35,7 @@ export const register = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV == "production",
-      sameSite: process.env.NODE_ENV == "production" ? "none" : "strict",
+      sameSite: none,
       maxAge: 7 * 24 * 60 * 60 * 60 * 1000,
     });
 
@@ -86,7 +86,7 @@ export const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV == "production",
-      sameSite: process.env.NODE_ENV == "production" ? "none" : "strict",
+      sameSite: none,
       maxAge: 7 * 24 * 60 * 60 * 60 * 1000,
     });
 
@@ -190,11 +190,18 @@ export const verifyEmail = async (req, res) => {
 };
 
 //is Authenticated
-export const isAuthenticated = async (req, res) => {
+export const isAuthenticated = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ success: false, message: "Not Authorized, Login Again" });
+  }
+
   try {
-    return res.json({ success: true });
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded; // Attach user info to request
+    next();
   } catch (error) {
-    res.json({ success: false, message: error.message });
+    return res.status(401).json({ success: false, message: "Invalid Token, Login Again" });
   }
 };
 
