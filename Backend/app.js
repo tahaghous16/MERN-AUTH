@@ -31,7 +31,7 @@ app.use(cookieParser());
 
 //API endpoints
 app.get("/", (req, res) => {
-  res.send("API WORKING");
+  res.send("Backend is Working");
 });
 
 //Auth Router
