@@ -14,7 +14,7 @@ const allowedOrigins = ["http://localhost:5173"];
 
 //Database Connection
 mongoose
-  .connect(process.env.URI)
+  .connect(`${process.env.URI}/mern-auth`)
   .then(() => {
     console.log("Connected!");
   })
