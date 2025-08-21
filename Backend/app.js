@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-const allowedOrigins = ["https://mern-auth-frontend-topaz.vercel.app/"];
+const allowedOrigins = [process.env.ALLOWED_ORIGIN];
 
 //Database Connection
 connectDB();
