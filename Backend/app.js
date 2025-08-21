@@ -5,22 +5,16 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.route.js";
 import userRouter from "./routes/user.route.js";
+import connectDB from "./utils/connectDB.js";
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["https://mern-auth-frontend-topaz.vercel.app/"];
 
 //Database Connection
-mongoose
-  .connect(`${process.env.URI}/mern-auth`)
-  .then(() => {
-    console.log("Connected!");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+connectDB();
 
 app.use(express.json());
 app.use(cors({ origin: allowedOrigins, credentials: true }));
