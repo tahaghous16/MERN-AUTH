@@ -11,13 +11,27 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-const allowedOrigins = [process.env.ALLOWED_ORIGIN];
+// const allowedOrigins = [process.env.ALLOWED_ORIGIN];
+const allowedOrigins = process.env.ALLOWED_ORIGIN.split(",");
 
 //Database Connection
 connectDB();
 
 app.use(express.json());
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+// app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like curl / mobile apps)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.use(cookieParser());
 
